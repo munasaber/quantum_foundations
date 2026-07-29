@@ -1,13 +1,15 @@
+"""This model is for functions related to specific foundational problems in mathematical simulations"""
+
 import numpy as np
 
 
-def Kraus_solver(rho, channel, probability_of_decay, steps):
+def Kraus_solver(rho : np.array, channel : str, probability_of_decay : float, steps : int):
     """
     Uses the Kraus operator to calculate the density matrix.
     
     Inputs
     ------
-    initial_rho: np.ndarray
+    rho: np.array
         The initial qubit
     channel: str
         Indicates if we are looking at a "phase_dampening" or "amplitude_dampening" problem
@@ -31,13 +33,13 @@ def Kraus_solver(rho, channel, probability_of_decay, steps):
     return tabulated_rho
 
 
-def Lindblad_solver(rho, channel, probability_of_decay, time, H):
+def Lindblad_solver(rho : np.array, channel : str, probability_of_decay : float, time : tuple, H : np.array):
     """
     Uses the Lindblad master equation to calculate the density matrix under continuous time evolution. 
     
     Inputs
     ------
-    initial_rho: np.ndarray
+    rho: np.array
         The initial qubit
     channel: str
         Indicates if we are looking at a "phase_dampening" or "amplitude_dampening" problem
@@ -63,13 +65,13 @@ def Lindblad_solver(rho, channel, probability_of_decay, time, H):
     tabulated_rho=scipy.integrate.solve_ivp(tabulated_drho_dt)
     return tabulated_rho
 
-def density_matrix_solver(initial_rho, channel, probability_of_decay, solver, steps_or_time, H=None):
+def density_matrix_solver(initial_rho : np.array, channel: str, probability_of_decay: float, solver : str, steps_or_time: int or tuple, H=None : np.array):
     """
     Density matrix solver that determines if given a quantum system starting at a known configuration, how does the state change over time when subjected to environmental noise. 
 
     Inputs
     ------
-    initial_rho: np.ndarray
+    initial_rho: np.array
         The initial qubit
     channel: str
         Indicates if we are looking at a "phase_dampening" or "amplitude_dampening" problem

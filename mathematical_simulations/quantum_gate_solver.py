@@ -1,5 +1,5 @@
 """This module contains functions for solving for the final state after a qubit passes through two gates (Hadamard gate and a NOT gate, starting from the ground state"""
-
+import numpy as np
 
 
 def apply_gate(qubit: np.array, gate_type: str):

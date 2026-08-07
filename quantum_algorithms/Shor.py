@@ -1,5 +1,6 @@
 """This module contains functions for solving Shor's algorithm"""
 import numpy as np
+import math
 
 
 def is_prime(number: int):
@@ -30,9 +31,10 @@ def Shors_algorithm(N: int, a: int):
 
     #Validation that N is already prime.
     if is_prime(N):
-        print(f"{N} is prime. Shor's algorithm is not needed")
+        print(f"{N} is prime. Shor's algorithm is not needed.")
         return 
     
     #Validation that a is a coprime number
-
+    if math.gcd(a, N)!=1:
+        print(f"{N} and {a} are not coprime. Shor's algorithm is not needed.")
 

@@ -16,6 +16,16 @@ def is_prime(number: int):
             return False
     return True
 
+def find_lowest_periond(a, N):
+    """
+    Find the lowest period, r.
+    """
+    for r in range(1, N, 1):
+        remainder=(a^r)%N
+        if remainder==1:
+            break
+    return remainder
+
 
 def Shors_algorithm(N: int, a: int):
     """
@@ -38,3 +48,5 @@ def Shors_algorithm(N: int, a: int):
     if math.gcd(a, N)!=1:
         print(f"{N} and {a} are not coprime. Shor's algorithm is not needed.")
 
+    #Calculate the period of r such that a^r=1(mod N)
+    r=find_period(a, N)

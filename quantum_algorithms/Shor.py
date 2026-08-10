@@ -1,6 +1,7 @@
 """This module contains functions for solving Shor's algorithm"""
 import numpy as np
 import math
+import random
 
 
 def is_prime(number: int):
@@ -27,7 +28,7 @@ def find_lowest_periond(a, N):
     return remainder
 
 
-def Shors_algorithm(N: int, a: int):
+def Shors_algorithm(N: int):
     """
     This function solves Shor's algorithm manually, finding the smallest positive integer r such that a^r = 1 modN.
 
@@ -35,9 +36,10 @@ def Shors_algorithm(N: int, a: int):
     ------
     N : int
         A composite integer that is the product of two or more distinct prime numbers. 
-    a : int
-        A coprime integer to N chosen at random 
     """
+
+    #Determination of a, an integer that is coprime to N and chosen at random. 
+    a=random.randint(1, N)
 
     #Validation that N is already prime.
     if is_prime(N):
@@ -50,3 +52,8 @@ def Shors_algorithm(N: int, a: int):
 
     #Calculate the period of r such that a^r=1(mod N)
     r=find_period(a, N)
+
+    #Check if r is even or odd
+    if r%2=1: 
+        a=random.randint(1, N)
+        r=find_period(a, N)

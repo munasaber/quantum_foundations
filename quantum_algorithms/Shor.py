@@ -57,3 +57,11 @@ def Shors_algorithm(N: int):
     if r%2=1: 
         a=random.randint(1, N)
         r=find_period(a, N)
+
+    #c is the factor such that (a^(r/2)-1)(a^(r/2)+1) so we calculate c=a^(r/2)modN
+    c=pow(a,(r/2))%N
+    if c%N ==1 or c%N ==-1:
+        a=random.randint(1, N)
+        r=find_period(a, N)
+
+    

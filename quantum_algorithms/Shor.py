@@ -61,21 +61,22 @@ def Shors_algorithm(N: int):
     #Validation that a is a coprime number
     if math.gcd(a, N)!=1:
         print(f"{N} and {a} are not coprime. Shor's algorithm is not needed.")
+        return
 
     #Calculate the period of r such that a^r=1(mod N)
     r=find_period(a, N)
 
     #Check if r is even or odd
-    if r%2=1: 
+    while r%2==1: 
         a=random.randint(1, N)
         r=find_period(a, N)
 
     #c is the factor such that (a^(r/2)-1)(a^(r/2)+1) so we calculate c=a^(r/2)modN
-    c=pow(a,(r/2))%N
-    if c%N ==1 or c%N ==-1:
+    c=pow(a,(r//2))%N
+    while c%N ==1 or c%N ==-1 or r%2==1:
         a=random.randint(1, N)
         r=find_period(a, N)
-
+        c=pow(a,(r//2))%N
 
 
     

@@ -40,7 +40,7 @@ def find_lowest_periond(a, N):
     return remainder
 
 
-def Shors_algorithm(N: int):
+def Shors_algorithm(N: int)-> tuple:
     """
     This function solves Shor's algorithm manually, finding the smallest positive integer r such that a^r = 1 modN.
 
@@ -51,12 +51,12 @@ def Shors_algorithm(N: int):
     """
 
     #Determination of a, an integer that is coprime to N and chosen at random. 
-    a=random.randint(1, N)
+    a=random.randint(2, N-1)
 
     #Validation that N is already prime.
     if is_prime(N):
         print(f"{N} is prime. Shor's algorithm is not needed.")
-        return 
+        return (1, N) 
     
     #Validation that a is a coprime number
     if math.gcd(a, N)!=1:
@@ -74,7 +74,7 @@ def Shors_algorithm(N: int):
     #c is the factor such that (a^(r/2)-1)(a^(r/2)+1) so we calculate c=a^(r/2)modN
     c=pow(a,(r//2))%N
     while c%N ==1 or c%N ==-1 or r%2==1:
-        a=random.randint(1, N)
+        a=random.randint(2, N-1)
         r=find_period(a, N)
         c=pow(a,(r//2))%N
 

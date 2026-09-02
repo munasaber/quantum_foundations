@@ -59,9 +59,10 @@ def Shors_algorithm(N: int)-> tuple:
         return (1, N) 
     
     #Validation that a is a coprime number
-    if math.gcd(a, N)!=1:
+    greatest_common_denom=math.gcd(a, N)
+    if greatest_common_denom!=1:
         print(f"{N} and {a} are not coprime. Shor's algorithm is not needed.")
-        return
+        return greatest_common_denom, N//greatest_common_denom
 
     #Calculate the period of r such that a^r=1(mod N)
     r=find_period(a, N)

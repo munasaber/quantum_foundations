@@ -71,7 +71,11 @@ def Shors_algorithm(N: int)-> tuple:
     #Check if r is even or odd
     r=find_period(a, N)
     while r%2!=0:
-        a=random.randint(1, N-1)
+        a=random.randint(2, N-1)
+        greatest_common_div=math.gcd(a, N)
+        if greatest_common_div!=1:
+            print(f"{N} and {a} are not coprime. Shor's algorithm is not needed.")
+            return (greatest_common_div, N//greatest_common_div)
         r=find_period(a, N)
 
     #Calculate the period of r such that a^r=1(mod N)

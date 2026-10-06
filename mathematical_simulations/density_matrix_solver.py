@@ -1,7 +1,7 @@
-"""This model is for functions related to specific foundational problems in mathematical simulations"""
+"""This model is for functions related to specific foundational problems in mathematical simulations, specificaly the calculation of density matricies with the Kraus and Lindbald solvers"""
 
 import numpy as np
-
+import scipy
 
 def Kraus_solver(rho : np.array, channel : str, probability_of_decay : float, steps : int):
     """
@@ -84,7 +84,7 @@ def density_matrix_solver(initial_rho : np.array, channel: str, probability_of_d
     H: np.array
         Hamiltonian in the form of a 2X2 array.
     """
-    if solver.lower()=="kraus":
+    if solver.lower()=="Kraus":
         return Kraus_solver(initial_rho, channel, probability_of_decay, steps_or_time)
     elif solver.lower()=="Lindblad":
         if H==None:

@@ -19,6 +19,6 @@ def apply_gate(qubit: np.array, gate_type: str):
     elif gate_type.lower()=="not":
         gate=np.array([[0, 1],[1 , 0]])
     else:
-        raise ValueError("Incorrect gate_type. Please enter Hadamard or NOT for the gate_type")
+        raise ValueError("Incorrect gate_type. Please enter Hadamard or NOT for the gate_type.")
     return gate@qubit
 
